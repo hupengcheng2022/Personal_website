@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PingFang SC","Microsoft YaHei UI",sans-serif;
+}
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vm;
+    height: 80px;
+    background-color: black;
+    box-shadow: 0 0 20px black;
+}
+.logo{
+    flex: 1;
+    margin-left: 40px;
+}
+.nav-menu{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+
+    max-width: 550px;
+    margin-right: 40px;
+}
+
+.nav-menu li{
+    list-style: none;
+    font-weight: 600;
+}
+.nav-menu .active,.nav-menu li:hover{
+    text-shadow: 0 3px 6px white;
+}
+.nav-menu li a{
+    text-decoration: none;
+    color: white;
+}
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px;
+}
+.burger{
+    display: none;
+}
+@media screen and (max-width:640px){
+    .nav-menu{
+        position: absolute;
+        top: 80px;
+        right: 0;
+        bottom: 0;
+        width: 50vw;
+        height: calc( 100vh - 80px);
+        margin-right: 0;
+
+        background-color: black;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        transform: translateX(100%);
+        transition: 0.4s ease-in-out;
+    }
+
+    .nav-menu.open{
+        transform: translateX(0);
+        box-shadow: 0 0 20px black;
+    }
+    .nav-menu li{
+        margin: 3vh;
+        transform: translateX(20px);
+        opacity: 0;
+    }
+
+    .burger{
+        display: block;
+        margin-right: 40px;
+
+    }
+
+    .burger.active div{
+        transition: 0.3s ease-in-out 0.3s;
+    }
+    .burger.active .top-line{
+        transform: rotate(45deg) translate(4px,6px);
+    }
+    .burger.active .middle-line{
+        opacity: 0;
+        transform: translateX(10px);
+        transition: 0.3s ease-in-out;
+    }
+    .burger.active .bottom-line{
+        transform: rotate(-45deg) translate(4px,-6px);
+    }
+    @keyframes slideIn {
+        from{
+            transform: translateX(20px);
+            opacity: 0;
+        }
+        to{
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}
